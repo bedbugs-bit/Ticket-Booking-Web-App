@@ -4,7 +4,6 @@ import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import NotFound from "../views/NotFound.jsx";
 import Home from "../views/Home.jsx";
-import DefaultLayout from "../components/Layouts/DefaultLayout.jsx";
 import AdminLayout from "../components/Layouts/AdminLayout.jsx";
 import Login from "../views/Login.jsx";
 import Dashboard from "../views/Dashboard.jsx";
@@ -14,8 +13,7 @@ import ReserveBooking from "../views/ReserveBooking.jsx";
 const router = createBrowserRouter([
     {
         path: "/",
-        element: <DefaultLayout />,
-        children: [{ path: "/", element: <Home /> }],
+        element: <Home />,
     },
 
     {

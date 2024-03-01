@@ -15,8 +15,6 @@ import {
 const { Header, Content, Footer } = Layout;
 const { Title, Text } = Typography;
 
-import { Link } from "react-router-dom";
-
 // const items = [
 //     { key: "1", label: "Home" },
 //     { key: "2", label: "Book Appointment" },
@@ -166,14 +164,12 @@ function Home() {
                                     <Button
                                         className="animated-button"
                                         type="primary"
-                                        href="https://ant.design"
+                                        href="/book-appointment"
                                         target="_blank"
                                         style={{ marginTop: 20 }}
                                         block
                                     >
-                                        <Link to="/book-appointment">
-                                            Explore Now
-                                        </Link>
+                                        Explore Now
                                     </Button>
                                 </div>
                             </Col>

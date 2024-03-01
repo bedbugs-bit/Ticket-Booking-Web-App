@@ -12,7 +12,7 @@ import {
 } from "antd";
 import { LockOutlined, MailOutlined } from "@ant-design/icons";
 import { useState } from "react";
-import { useHistory } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import axiosClient from "../api/axios-client";
 
 const { Footer } = Layout;
@@ -25,8 +25,7 @@ function Login() {
     const screens = useBreakpoint();
 
     const [loading, setLoading] = useState(false);
-    const history = useHistory();
-
+    // const navigate = useNavigate();
     const onFinish = async (values) => {
         setLoading(true);
         try {
@@ -38,7 +37,7 @@ function Login() {
             localStorage.setItem("ACCESS_TOKEN", response.data.token);
             message.success("Login successful");
             setLoading(false);
-            history.push("/admin/dashboard"); // Redirect to the admin dashboard page
+            // navigate("/admin/dashboard"); // Redirect to the admin dashboard page
         } catch (error) {
             // Error handling
             if (error.response && error.response.status === 401) {
@@ -162,7 +161,7 @@ function Login() {
                         <Button
                             block="true"
                             type="primary"
-                            htmlType="submit" 
+                            htmlType="submit"
                             loading={loading}
                         >
                             Log in

@@ -5,7 +5,7 @@ import { Navigate, Outlet } from "react-router-dom";
 function AdminLayout() {
     const { token } = useStateContext();
     if (!token) {
-        return <Navigate to="/" />;
+        return <Navigate to="/admin/dashboard" />;
     }
 
     return (

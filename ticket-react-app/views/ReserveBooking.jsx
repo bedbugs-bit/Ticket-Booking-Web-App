@@ -1,6 +1,6 @@
 import { Layout, Menu, theme, Image, Breadcrumb } from "antd";
 import { UploadOutlined, UserOutlined } from "@ant-design/icons";
-import BookingForm from "../components/BookingForm";
+// import BookingForm from "../components/BookingForm";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 

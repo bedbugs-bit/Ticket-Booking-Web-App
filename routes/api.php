@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\EventTypeController;
+use App\Http\Controllers\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,3 +30,6 @@ Route::apiResource('event-types', EventTypeController::class);
 
 // Bookings
 Route::apiResource('bookings', BookingController::class);
+
+// users auth
+Route::post('/login', [AuthController::class, 'login']);

@@ -10,7 +10,6 @@ function AdminLayout() {
 
     return (
         <div>
-            DefaultLayout
             <Outlet />
         </div>
     );

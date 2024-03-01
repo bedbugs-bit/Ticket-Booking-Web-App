@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('bookings', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('event_type_id')->constrained('event_types');
+            $table->foreignId('event_id')->constrained('events');
             $table->string('user_email');
             $table->unsignedInteger('number_of_tickets');
             $table->string('booking_reference')->unique();

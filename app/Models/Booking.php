@@ -9,7 +9,7 @@ class Booking extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['event_type_id', 'user_email', 'number_of_tickets', 'booking_reference'];
+    protected $fillable = ['event_id', 'user_email', 'number_of_tickets', 'booking_reference'];
 
     public function eventType()
     {

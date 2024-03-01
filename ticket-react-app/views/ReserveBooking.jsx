@@ -1,38 +1,35 @@
 import { Layout, Menu, theme, Image, Breadcrumb } from "antd";
-import { UploadOutlined, UserOutlined } from "@ant-design/icons";
-// import BookingForm from "../components/BookingForm";
-import React from "react";
+import { HomeOutlined, UserOutlined, UploadOutlined } from "@ant-design/icons";
 import { useNavigate } from "react-router-dom";
+import BookingForm from "../components/BookingForm.jsx";
 
 const { Header, Content, Footer, Sider } = Layout;
 
-const items = [
-    {
-        key: "1",
-        label: "Home",
-        icon: React.createElement(UserOutlined),
-    },
-    {
-        key: "2",
-        label: "Appointment",
-        icon: React.createElement(UploadOutlined),
-    },
-];
-
 function ReserveBooking() {
-    const {
-        token: { colorBgContainer, borderRadiusLG },
-    } = theme.useToken();
-
     const navigate = useNavigate();
+    const { colorBgContainer, borderRadiusLG } = theme.useToken();
+
+    const items = [
+        {
+            key: "1",
+            icon: <HomeOutlined />,
+            label: "Home",
+            onClick: () => navigate("/"),
+        },
+        {
+            key: "2",
+            icon: <UserOutlined />,
+            label: "Admin",
+            onClick: () => navigate("/admin/login"),
+        },
+        { key: "3", icon: <UploadOutlined />, label: "Appointment" },
+    ];
 
     return (
         <Layout>
             <Sider
                 breakpoint="lg"
                 collapsedWidth="0"
-                onBreakpoint={(broken) => console.log(broken)}
-                onCollapse={(collapsed, type) => console.log(collapsed, type)}
                 style={{ height: "95vh" }}
             >
                 <Image
@@ -47,21 +44,12 @@ function ReserveBooking() {
                     }}
                     preview={false}
                 />
-                <Menu theme="dark" mode="inline" defaultSelectedKeys={["2"]}>
-                    {items.map((item) => (
-                        <Menu.Item
-                            key={item.key}
-                            icon={item.icon}
-                            onClick={() => {
-                                if (item.key === "1") {
-                                    navigate("/");
-                                }
-                            }}
-                        >
-                            {item.label}
-                        </Menu.Item>
-                    ))}
-                </Menu>
+                <Menu
+                    theme="dark"
+                    mode="inline"
+                    defaultSelectedKeys={["3"]}
+                    items={items}
+                />
             </Sider>
             <Layout>
                 <Header
@@ -77,14 +65,9 @@ function ReserveBooking() {
                         display: "flex",
                         flexDirection: "column",
                         alignItems: "center",
-                        // justifyContent: "center",
                     }}
                 >
-                    <Breadcrumb
-                        style={{
-                            marginTop: "10",
-                        }}
-                    >
+                    <Breadcrumb style={{ marginTop: "10px" }}>
                         <Breadcrumb.Item>Your Booking</Breadcrumb.Item>
                         <Breadcrumb.Item>Event</Breadcrumb.Item>
                     </Breadcrumb>
@@ -99,14 +82,10 @@ function ReserveBooking() {
                             maxWidth: "900px",
                         }}
                     >
-                        {/* <BookingForm /> */}
+                        <BookingForm />
                     </div>
                 </Content>
-                <Footer
-                    style={{
-                        textAlign: "center",
-                    }}
-                >
+                <Footer style={{ textAlign: "center" }}>
                     Joel Obowu ©{new Date().getFullYear()}
                 </Footer>
             </Layout>

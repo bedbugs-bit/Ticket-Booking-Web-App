@@ -30,7 +30,7 @@ class BookingController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'event_type_id' => 'required|exists:event_types,id',
+            'event_id' => 'required|exists:event_types,id',
             'user_email' => 'required|email',
             'number_of_tickets' => 'required|integer|min:1',
             // Ensure booking_reference is unique across bookings

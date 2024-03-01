@@ -1,5 +1,3 @@
-// import React from 'react'
-
 import {
     Button,
     Checkbox,
@@ -10,11 +8,14 @@ import {
     Typography,
     Image,
     Layout,
+    message,
 } from "antd";
-
 import { LockOutlined, MailOutlined } from "@ant-design/icons";
-const { Footer } = Layout;
+import { useState } from "react";
+import { useHistory } from "react-router-dom";
+import axiosClient from "../api/axios-client";
 
+const { Footer } = Layout;
 const { useToken } = theme;
 const { useBreakpoint } = Grid;
 const { Text, Title } = Typography;
@@ -23,8 +24,37 @@ function Login() {
     const { token } = useToken();
     const screens = useBreakpoint();
 
-    const onFinish = (values) => {
-        console.log("Received values of form: ", values);
+    const [loading, setLoading] = useState(false);
+    const history = useHistory();
+
+    const onFinish = async (values) => {
+        setLoading(true);
+        try {
+            const response = await axiosClient.post("/login", {
+                email: values.email,
+                password: values.password,
+            });
+            // store the token in local storage
+            localStorage.setItem("ACCESS_TOKEN", response.data.token);
+            message.success("Login successful");
+            setLoading(false);
+            history.push("/admin/dashboard"); // Redirect to the admin dashboard page
+        } catch (error) {
+            // Error handling
+            if (error.response && error.response.status === 401) {
+                // Specific message for unauthorized
+                message.error(
+                    "Login failed: Unauthorized. Please check your credentials."
+                );
+            } else if (error.response && error.response.status === 404) {
+                // Handle not found errors
+                message.error("Login failed: Service not found.");
+            } else {
+                // General error message for other HTTP status codes or network errors
+                message.error("Login failed. Please try again.");
+            }
+            setLoading(false);
+        }
     };
 
     const styles = {
@@ -129,7 +159,12 @@ function Login() {
                         </a>
                     </Form.Item>
                     <Form.Item style={{ marginBottom: "0px" }}>
-                        <Button block="true" type="primary" htmlType="submit">
+                        <Button
+                            block="true"
+                            type="primary"
+                            htmlType="submit" 
+                            loading={loading}
+                        >
                             Log in
                         </Button>
                     </Form.Item>
@@ -143,9 +178,7 @@ function Login() {
                 </Footer>
             </div>
 
-            <div style={{ justify: "space-between" }}>
-                
-            </div>
+            <div style={{ justify: "space-between" }}></div>
         </section>
     );
 }

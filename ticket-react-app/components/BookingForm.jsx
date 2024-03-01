@@ -33,7 +33,7 @@ function BookingForm() {
         const fetchEvents = async () => {
             try {
                 const { data: eventsData } = await axios.get(
-                    "http://localhost:8000/api/events"
+                    `${import.meta.env.VITE_SERVER_BASE_URL}/api/events`
                 );
                 setEvents(eventsData);
             } catch (error) {
@@ -59,10 +59,14 @@ function BookingForm() {
         };
 
         console.log(bookingData);
+        `${import.meta.env.VITE_SERVER_BASE_URL}/api/bookings`;
 
         try {
             // Submit booking data to the backend
-            await axios.post("http://localhost:8000/api/bookings", bookingData);
+            await axios.post(
+                `${import.meta.env.VITE_SERVER_BASE_URL}/api/bookings`,
+                bookingData
+            );
             notification.success({
                 message: "Booking Successful",
                 description: "Your booking has been successfully recorded.",

@@ -1,12 +1,15 @@
 // import React from 'react'
-import { useStateContext } from "../../contexts/ContextProvider.jsx";
-import { Navigate, Outlet } from "react-router-dom";
+// import { useStateContext } from "../../contexts/ContextProvider.jsx";
+import {
+    //  Navigate,
+    Outlet,
+} from "react-router-dom";
 
 function AdminLayout() {
-    const { token } = useStateContext();
-    if (!token) {
-        return <Navigate to="/admin/dashboard" />;
-    }
+    // const { token } = useStateContext();
+    // if (!token) {
+    //     return <Navigate to="/" />;
+    // }
 
     return (
         <div>

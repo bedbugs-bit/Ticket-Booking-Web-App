@@ -33,13 +33,13 @@ The React application is bootstrapped with Vite and follows a standard React pro
 
 1. Clone the repository.
 2. Install PHP dependencies: `composer install`.
-3. Install JavaScript dependencies: `npm install`.
-4. Copy the `.env.example` file to a new file named `.env` and update the environment variables to match your local environment.
-5. Generate an application key: `php artisan key:generate`.
-6. Run the database migrations: `php artisan migrate`.
-7. Start the Laravel server: `php artisan serve`.
-8. Navigate to the `ticket-react-app` directory and install the dependencies:
+3. You can install JavaScript dependencies in the `ticket-react-app` directory: `npm install`.
+4. Generate an application key: `php artisan key:generate`.
+5. Run the database migrations: `php artisan migrate`.
+6. Start the Laravel server: `php artisan serve`.
+7. Navigate to the `ticket-react-app` directory and install the dependencies:
    `npm install`.
+8. Copy the `.env.example` file to a new file named `.env` and update the environment variables to match your local environment.
    9.Start the React development server: `npm run dev`.
 
 ## Building
@@ -66,7 +66,7 @@ The application includes the following routes:
 
 ## Admin Credentials for login in the Booking App and managing events.
 
-For testing the admin functionalities locally, you can use the following credentials:
+For testing the admin functionalities locally, you can use the following credentials to login into the Booking application admin panel:
 
 -   Email: `admin@example.com`
 -   Password: `password`
